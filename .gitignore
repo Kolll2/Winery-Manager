@@ -104,3 +104,5 @@ out
 gen
 /.gradle/
 gradle/wrapper/gradle-wrapper.properties
+build/reports/tests/test/classes/com.kolll.core.winery.WineryTest.html
+/build/
