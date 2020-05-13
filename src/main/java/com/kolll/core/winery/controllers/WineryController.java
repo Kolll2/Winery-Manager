@@ -1,6 +1,7 @@
 package com.kolll.core.winery.controllers;
 
 import com.kolll.core.winery.Winery;
+import com.kolll.core.winery.controllers.winerycommands.*;
 
 import java.lang.reflect.Executable;
 
@@ -14,31 +15,31 @@ public class WineryController {
     public void execute(String command){
         //[b]uy a new vineyard
         if (command.equals("b") || command.equals("B")){
-            System.out.println("in buy vineyards menu");
+            new BuyNewVineyard().execute();
         }
         //[s]ell a vineyards
         if (command.equals("s") || command.equals("S")){
-            System.out.println("in sell vineyards menu");
+            new SellVineyards().execute();
         }
         //[m]anage you vineyards
         if (command.equals("m") || command.equals("M")){
-            System.out.println("in manage menu");
+            new ManageYouVineyards().execute();
         }
         //[t]o collect grapes
         if (command.equals("t") || command.equals("T")){
-            System.out.println("in collect menu");
+            new ToCollectGrapes().execute();
         }
         //to make [w]ine
         if (command.equals("w") || command.equals("W")){
-            System.out.println("in make wine menu");
+            new ToMakeWine().execute();
         }
         //s[e]ll wine
         if (command.equals("e") || command.equals("E")){
-            System.out.println("in sell wine menu");
+            new SellWine().execute();
         }
         //[n]ext turn
         if (command.equals("n") || command.equals("N")){
-            System.out.println("next turn");
+            new NextTurn().execute();
         }
     }
 }
