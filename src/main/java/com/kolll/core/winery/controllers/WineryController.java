@@ -8,8 +8,12 @@ import java.lang.reflect.Executable;
 public class WineryController {
     Winery winery;
 
+    //local variable
+    boolean alive;
+
     public WineryController(Winery winery) {
         this.winery = winery;
+        setAlive(true);
     }
 
     public void execute(String command){
@@ -41,5 +45,18 @@ public class WineryController {
         if (command.equals("n") || command.equals("N")){
             new NextTurn().execute();
         }
+
+        //E[x]it game
+        if (command.equals("x") || command.equals("X")){
+            alive = false;
+        }
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

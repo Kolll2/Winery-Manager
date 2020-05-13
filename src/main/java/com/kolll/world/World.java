@@ -31,10 +31,12 @@ public class World {
     }
 
     private void stepByStepLoop(){
-        display.update();
-        drawMenu();
+        while (controller.isAlive()) {
+            display.update();
+            drawMenu();
 
-        controller.execute(getACommand());
+            controller.execute(getACommand());
+        }
     }
 
     private void drawMenu() {
@@ -44,7 +46,7 @@ public class World {
         System.out.println();
         System.out.println("[b]uy a new vineyard\t" + "[s]ell a vineyards\t" + " [m]anage you vineyards");
         System.out.println("[t]o collect grapes\t   " + " to make [w]ine\t\t" + " s[e]ll wine");
-        System.out.println("[n]ext turn");
+        System.out.println("[n]ext turn \t" + "E[x]it game");
     }
 
     private String getACommand(){
