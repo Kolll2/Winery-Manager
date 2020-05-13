@@ -2,17 +2,20 @@ package com.kolll.core.winery.controllers;
 
 import com.kolll.core.winery.Winery;
 import com.kolll.core.winery.controllers.winerycommands.*;
+import com.kolll.world.World;
 
 import java.lang.reflect.Executable;
 
 public class WineryController {
     Winery winery;
+    World world;
 
     //local variable
     boolean alive;
 
-    public WineryController(Winery winery) {
+    public WineryController(World world, Winery winery) {
         this.winery = winery;
+        this.world = world;
         setAlive(true);
     }
 
@@ -43,7 +46,7 @@ public class WineryController {
         }
         //[n]ext turn
         if (command.equals("n") || command.equals("N")){
-            new NextTurn().execute();
+            new NextTurn(world).execute();
         }
 
         //E[x]it game

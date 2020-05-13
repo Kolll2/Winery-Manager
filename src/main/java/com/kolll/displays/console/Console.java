@@ -1,19 +1,26 @@
 package com.kolll.displays.console;
 
 import com.kolll.displays.Display;
+import com.kolll.world.World;
 
 import java.time.LocalDate;
 import java.time.Month;
 
 public class Console implements Display {
 
+    World world;
+
     //test value
     long money = 2576;
-    LocalDate gameDate = LocalDate.of(1725, Month.JANUARY, 1);
+
+    public Console(World world) {
+        this.world = world;
+    }
+
     @Override
     public void draw() {
 
-        System.out.println(" Money: " + money + "\t Date: " + gameDate.toString());
+        System.out.println(" Money: " + money + "\t Date: " + world.getGameDate().toString());
 
     }
 

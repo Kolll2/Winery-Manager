@@ -3,30 +3,37 @@ package com.kolll.world;
 import com.kolll.core.winery.Winery;
 import com.kolll.core.winery.controllers.WineryController;
 import com.kolll.displays.Display;
+import com.kolll.displays.console.Console;
 import lombok.SneakyThrows;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Scanner;
 
 public class World {
 
     Display display;
+    LocalDate gameDate;
 
     Winery winery;
     WineryController controller;
 
 
-    public World(Display display, Winery winery) {
-        this.display = display;
+    public World(Winery winery) {
+        this.display = new Console(this);
         this.winery = winery;
-        controller = new WineryController(winery);
+        controller = new WineryController(this, winery);
+        gameDate = LocalDate.of(1725, Month.JANUARY, 1);
         display.draw();
     }
+
 
     @SneakyThrows
     private void gameLoop(){
         while (true) {
             display.update();
             Thread.sleep(500);
+            gameDate = gameDate.plusDays(1);
         }
     }
 
@@ -61,5 +68,13 @@ public class World {
         } else {
             gameLoop();
         }
+    }
+
+    public LocalDate getGameDate() {
+        return gameDate;
+    }
+
+    public void setGameDate(LocalDate gameDate) {
+        this.gameDate = gameDate;
     }
 }
