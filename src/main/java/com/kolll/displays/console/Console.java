@@ -19,6 +19,7 @@ public class Console implements Display {
 
     @Override
     public void update() {
+        draw();
 
     }
 }
