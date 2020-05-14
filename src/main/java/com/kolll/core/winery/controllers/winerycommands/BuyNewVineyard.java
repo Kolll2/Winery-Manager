@@ -1,5 +1,9 @@
 package com.kolll.core.winery.controllers.winerycommands;
 
+import com.kolll.core.winery.grape.red.CabernetSauvignon;
+import com.kolll.core.winery.vineyards.Vineyard;
+import com.kolll.core.winery.vineyards.Vineyards;
+import com.kolll.databrokers.dao.TestsDBBroker;
 import com.kolll.handler.ConsoleHandler;
 
 public class BuyNewVineyard implements WineryCommand {
@@ -11,7 +15,7 @@ public class BuyNewVineyard implements WineryCommand {
         System.out.println("select size new vineyard / выберете размер нового виноградника");
 
         String  sizeVineyard = ConsoleHandler.getCommnand();
-
+        Long sizeVineyardL = Long.getLong(sizeVineyard);
 
         System.out.println("choose a grape variety / выберете сорт винограда");
 
@@ -21,7 +25,7 @@ public class BuyNewVineyard implements WineryCommand {
                            "(10)Primitivo\t" + "(11)Shiraz\t" + "(12)Tempranillo\n" +
                            "(13)Zinfandel");
 
-        String  grapeVariety = ConsoleHandler.getCommnand();
+        String grapeVariety = ConsoleHandler.getCommnand();
 
 
         System.out.println("select the landing density / выберите плотность посадки");
@@ -31,5 +35,14 @@ public class BuyNewVineyard implements WineryCommand {
         String  landingDensity = ConsoleHandler.getCommnand();
 
         //send data about the created vineyard to the database
+        Vineyard vineyard = new Vineyard(sizeVineyardL);
+
+        //for tests
+        vineyard.setGrape(new CabernetSauvignon());
+        vineyard.setLandingDensity(landingDensity);
+
+        System.out.println(vineyard);
+
+        TestsDBBroker.addNewVineyard(vineyard);
     }
 }
